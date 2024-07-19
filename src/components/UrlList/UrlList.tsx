@@ -10,7 +10,7 @@ interface UrlListProps {
   removeUrl: (index: number) => void;
 }
 
-const UrlList: React.FC<UrlListProps> = ({ urlList, removeUrl }) => {
+const UrlList: React.FC<UrlListProps> = React.memo(({ urlList, removeUrl }) => {
   return (
     <div className="text-left mt-4">
       <ul>
@@ -28,6 +28,6 @@ const UrlList: React.FC<UrlListProps> = ({ urlList, removeUrl }) => {
       </ul>
     </div>
   );
-};
+});
 
 export default UrlList;

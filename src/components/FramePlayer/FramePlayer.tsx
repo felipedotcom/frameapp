@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import ImageDisplay from './components/ImageDisplay';
 import ControlButtons from './components/ControlButtons';
 import ProgressBar from './components/ProgressBar';
@@ -24,7 +24,7 @@ const FramePlayer: React.FC<FramePlayerProps> = ({ frames, fps, handleFpsChange 
     }
   }, [isPlaying, currentFrame, fps, seek]);
 
-  const displayFrame = frames.length > 0 ? frames[currentFrame] : placeholderImage;
+  const displayFrame = useMemo(() => frames.length > 0 ? frames[currentFrame] : placeholderImage, [frames, currentFrame]);
 
   return (
     <div className="frame-player mt-4 max-w-full mx-auto border rounded-lg p-4 bg-white shadow-lg">

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import UrlInputForm from '../src/components/UrlInputForm/UrlInputForm';
 import UrlList from '../src/components/UrlList/UrlList';
 import FramePlayer from '../src/components/FramePlayer/FramePlayer';
@@ -12,22 +12,21 @@ const App: React.FC = () => {
   const [urlList, setUrlList] = useState<UrlItem[]>([]);
   const [fps, setFps] = useState<number>(0.2);
 
-  const addUrl = (url: string) => {
+  const addUrl = useCallback((url: string) => {
     const newUrl: UrlItem = {
       name: `URL ${urlList.length + 1}`,
       url
     };
-    setUrlList([...urlList, newUrl]);
-  };
+    setUrlList(prevList => [...prevList, newUrl]);
+  }, [urlList.length]);
 
-  const removeUrl = (index: number) => {
-    const newList = urlList.filter((_, i) => i !== index);
-    setUrlList(newList);
-  };
+  const removeUrl = useCallback((index: number) => {
+    setUrlList(prevList => prevList.filter((_, i) => i !== index));
+  }, []);
 
-  const handleFpsChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFpsChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     setFps(parseFloat(e.target.value));
-  };
+  }, []);
 
   return (
     <div className="app text-center p-6">
