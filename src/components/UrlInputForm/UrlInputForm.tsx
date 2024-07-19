@@ -18,6 +18,12 @@ const UrlInputForm: React.FC<UrlInputFormProps> = ({ addUrl }) => {
     }
   };
 
+  const handleKeyPress = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleAddUrl();
+    }
+  };
+
   return (
     <div className="mt-4">
       <div className="flex">
@@ -25,6 +31,7 @@ const UrlInputForm: React.FC<UrlInputFormProps> = ({ addUrl }) => {
           type="text" 
           value={currentUrl} 
           onChange={handleInputChange} 
+          onKeyPress={handleKeyPress} 
           placeholder="Coloque a URL" 
           className="border rounded px-2 py-1 mr-2 flex-grow"
         />
@@ -40,4 +47,3 @@ const UrlInputForm: React.FC<UrlInputFormProps> = ({ addUrl }) => {
 };
 
 export default UrlInputForm;
-
