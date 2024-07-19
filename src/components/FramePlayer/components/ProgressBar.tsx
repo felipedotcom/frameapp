@@ -3,12 +3,12 @@ import React from 'react';
 interface ProgressBarProps {
   currentFrame: number;
   totalFrames: number;
-  seek: (frame: number) => void;
+  onFrameChange: (frame: number) => void;
 }
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ currentFrame, totalFrames, seek }) => {
-  const handleSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
-    seek(Number(e.target.value));
+const ProgressBar: React.FC<ProgressBarProps> = ({ currentFrame, totalFrames, onFrameChange }) => {
+  const handlFrameChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    onFrameChange(Number(e.target.value));
   };
 
   return (
@@ -18,7 +18,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ currentFrame, totalFrames, se
         min="0" 
         max={totalFrames - 1} 
         value={currentFrame} 
-        onChange={handleSeek} 
+        onChange={handlFrameChange} 
         className="w-full"
       />
     </div>

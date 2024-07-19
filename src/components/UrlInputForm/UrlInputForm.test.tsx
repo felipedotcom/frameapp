@@ -9,13 +9,13 @@ describe('UrlInputForm Component', () => {
     render(<UrlInputForm addUrl={addUrlMock} />);
 
     const input = screen.getByPlaceholderText('Coloque a URL');
-    fireEvent.change(input, { target: { value: 'https://example.com/image1.png' } });
+    fireEvent.change(input, { target: { value: 'https://exemplo.com/image1.png' } });
 
-    expect(input).toHaveValue('https://example.com/image1.png');
+    expect(input).toHaveValue('https://exemplo.com/image1.png');
 
     fireEvent.keyPress(input, { key: 'Enter', code: 'Enter', charCode: 13 });
 
-    expect(addUrlMock).toHaveBeenCalledWith('https://example.com/image1.png');
+    expect(addUrlMock).toHaveBeenCalledWith('https://exemplo.com/image1.png');
     expect(input).toHaveValue('');
   });
 
@@ -24,14 +24,14 @@ describe('UrlInputForm Component', () => {
     render(<UrlInputForm addUrl={addUrlMock} />);
 
     const input = screen.getByPlaceholderText('Coloque a URL');
-    fireEvent.change(input, { target: { value: 'https://example.com/image1.png' } });
+    fireEvent.change(input, { target: { value: 'https://exemplo.com/image1.png' } });
 
-    expect(input).toHaveValue('https://example.com/image1.png');
+    expect(input).toHaveValue('https://exemplo.com/image1.png');
 
     const addButton = screen.getByText('Adicione a URL');
     fireEvent.click(addButton);
 
-    expect(addUrlMock).toHaveBeenCalledWith('https://example.com/image1.png');
+    expect(addUrlMock).toHaveBeenCalledWith('https://exemplo.com/image1.png');
     expect(input).toHaveValue('');
   });
 });

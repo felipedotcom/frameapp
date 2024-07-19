@@ -12,7 +12,7 @@ const useFramePlayer = (totalFrames: number) => {
     setIsPlaying(false);
   };
 
-  const seek = useCallback((frame: number) => {
+  const onFrameChange = useCallback((frame: number) => {
     setCurrentFrame((frame + totalFrames) % totalFrames);
   }, [totalFrames]);
 
@@ -26,7 +26,7 @@ const useFramePlayer = (totalFrames: number) => {
     isPlaying,
     play,
     pause,
-    seek,
+    onFrameChange,
     reset,
   };
 };

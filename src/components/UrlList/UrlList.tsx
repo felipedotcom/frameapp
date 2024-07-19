@@ -16,7 +16,7 @@ const UrlList: React.FC<UrlListProps> = React.memo(({ urlList, removeUrl }) => {
       <ul>
         {urlList.map((item, index) => (
           <li key={index} className="flex justify-between items-center mb-2">
-            <span>{item.name}: {item.url}</span>
+            <span>{item.name}</span>
             <button 
               onClick={() => removeUrl(index)} 
               className="bg-red-500 hover:bg-red-700 text-white font-bold py-1 px-2 rounded"
