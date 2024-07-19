@@ -5,12 +5,10 @@ const useFramePlayer = (totalFrames: number) => {
   const [isPlaying, setIsPlaying] = useState<boolean>(false);
 
   const play = () => {
-    console.log('Play clicked');
     setIsPlaying(true);
   };
 
   const pause = () => {
-    console.log('Pause clicked');
     setIsPlaying(false);
   };
 
